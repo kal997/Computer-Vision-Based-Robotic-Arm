@@ -38,13 +38,13 @@ def get_angles(i, j, k, rx, ry, rz):
     phi_rad = acos((a1 ** 2 + (a2 + a3) ** 2 - k ** 2) / (2 * (a2 + a3) * a1))  # radians
     phi_deg = np.rad2deg(phi_rad)  # degrees
 
-    t2_deg = 180 - phi_deg  # degree
+    t2_deg = -1*(180 - phi_deg)  # degree
     t2_rad = np.deg2rad(t2_deg)  # radians
 
     alpha = atan2(p, r)  # radians
     beta = acos((a1 ** 2 + k ** 2 - (a2 + a3) ** 2) / (2 * a1 * k))  # radians
 
-    t1_rad = alpha - beta  # radian
+    t1_rad = alpha + beta  # radian
     t1_deg = np.rad2deg(t1_rad)  # degrees
 
     R0_1 = np.array([[cos(t0_rad), 0, sin(t0_rad)], [sin(t0_rad), 0, -1 * cos(t0_rad)], [0, 1, 0]])
