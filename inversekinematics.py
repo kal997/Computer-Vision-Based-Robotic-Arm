@@ -2,7 +2,7 @@ from math import sin, cos, sqrt, acos, atan2
 import numpy as np
 
 
-def get_angles(i, j, k, rx, ry, rz):
+def get_angles(i, j, k, rx=0, ry=0, rz=0):
     a0 = 5
     a1 = 5
     a2 = 5
@@ -62,5 +62,5 @@ def get_angles(i, j, k, rx, ry, rz):
     t4_deg = np.rad2deg(t4_rad)
     t5_deg = np.rad2deg(t5_rad)
 
-    return t0_deg, t1_deg, t2_deg, t3_deg, t4_deg, t5_deg
+    return [t0_deg, t1_deg, t2_deg, t3_deg, t4_deg, t5_deg]
 
