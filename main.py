@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 from detection import ObjectDetection
 from gui import user_input
-#                                                   # importing kinematics equations
-#                                                   # importing motors functions
+from inversekinematics import get_angles            # importing kinematics equations
+import joints                                       # importing motors functions
 number = 1                                          # initial no. to start with capturing function
 
 
@@ -49,6 +49,13 @@ while red_check:
         cv2.waitKey(4000)
         cv2.destroyAllWindows()
         number += 1                         # to rename the next captured image
+        angles = get_angles(red_coors[0])
+        joints.move(angles)
+        joints.pump()       # turn on the pump
+        joints.red_drop_pos()
+        joints.pump()       # turn of the pump
+        joints.parking_pos()
+
 
 number = 2  # will be removed
 while green_check:
@@ -79,6 +86,12 @@ while green_check:
         cv2.waitKey(4000)
         cv2.destroyAllWindows()
         number += 1                         # to rename the next captured image
+        angles = get_angles(green_coors[0])
+        joints.move(angles)
+        joints.pump()  # turn on the pump
+        joints.green_drop_pos()
+        joints.pump()  # turn of the pump
+        joints.parking_pos()
 
 number = 3  # will be removed
 while blue_check:
@@ -107,8 +120,13 @@ while blue_check:
         cv2.imshow("blue img", blue_img)
         cv2.waitKey(4000)
         cv2.destroyAllWindows()
-
         number += 1
+        angles = get_angles(blue_coors[0])
+        joints.move(angles)
+        joints.pump()  # turn on the pump
+        joints.blue_drop_pos()
+        joints.pump()  # turn of the pump
+        joints.parking_pos()
 
 number = 1
 while squares_check:
@@ -132,6 +150,12 @@ while squares_check:
         cv2.waitKey(4000)
         cv2.destroyAllWindows()
         number += 1
+        angles = get_angles(squares_coors[0])
+        joints.move(angles)
+        joints.pump()  # turn on the pump
+        joints.square_drop_pos()
+        joints.pump()  # turn of the pump
+        joints.parking_pos()
 
 number = 3  # will be removed
 while triangles_check:
@@ -155,6 +179,13 @@ while triangles_check:
         cv2.waitKey(4000)
         cv2.destroyAllWindows()
         number += 1
+        angles = get_angles(triangles_coors[0])
+        joints.move(angles)
+        joints.pump()  # turn on the pump
+        joints.triangle_drop_pos()
+        joints.pump()  # turn of the pump
+        joints.parking_pos()
+
 
 number = 4  # will be removed
 while circles_check:
@@ -178,6 +209,12 @@ while circles_check:
         cv2.waitKey(4000)
         cv2.destroyAllWindows()
         number += 1
+        angles = get_angles(circles_coors[0])
+        joints.move(angles)
+        joints.pump()  # turn on the pump
+        joints.circle_drop_pos()
+        joints.pump()  # turn of the pump
+        joints.parking_pos()
 print("Sorting process have done successfully.")
 cv2.waitKey(100)
 cv2.destroyAllWindows()
