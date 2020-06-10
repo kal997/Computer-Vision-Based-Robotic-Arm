@@ -8,21 +8,21 @@ def wrist(angle):
     pass
 def hand(angle):
     pass
-def pump:
+def pump():
     pass
-def blue_drop_pos:
+def blue_drop_pos():
     pass
-def green_drop_pos:
+def green_drop_pos():
     pass
-def red_drop_pos:
+def red_drop_pos():
     pass
-def square_drop_pos:
+def square_drop_pos():
     pass
-def circle_drop_pos:
+def circle_drop_pos():
     pass
-def triangle_drop_pos:
+def triangle_drop_pos():
     pass
-def parking_pos:
+def parking_pos():
     pass
 def move(angles):
     base(angles[0])
