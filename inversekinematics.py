@@ -3,12 +3,12 @@ import numpy as np
 
 
 def get_angles(i, j, k, rx=0, ry=0, rz=0):
-    a0 = 5
-    a1 = 5
-    a2 = 5
-    a3 = 5
-    a4 = 5
-    a5 = 5
+    a0 = 10.5
+    a1 = 10.7
+    a2 = 9.5
+    a3 = 3.5
+    a4 = 2.5
+    a5 = 0
 
     # rx, ry and rz are in radians
     rx = np.deg2rad(rx)
@@ -62,5 +62,8 @@ def get_angles(i, j, k, rx=0, ry=0, rz=0):
     t4_deg = np.rad2deg(t4_rad)
     t5_deg = np.rad2deg(t5_rad)
 
-    return [t0_deg, t1_deg, t2_deg, t3_deg, t4_deg, t5_deg]
+    return [t0_deg, t1_deg+30, (180-t1_deg)-30, 180-(-1*t2_deg), t3_deg, t4_deg, t5_deg]
+
+
+print(get_angles(5, 5, 1, 50, 90, 0))
 
