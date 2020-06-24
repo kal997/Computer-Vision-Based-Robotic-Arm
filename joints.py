@@ -1,6 +1,14 @@
+import multiprocessing
 from inversekinematics import get_angles
 from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
+kit.servo[0].set_pulse_width_range(500, 2500)
+kit.servo[1].set_pulse_width_range(500, 2500)
+kit.servo[2].set_pulse_width_range(500, 2500)
+kit.servo[3].set_pulse_width_range(500, 2500)
+kit.servo[4].set_pulse_width_range(500, 2500)
+kit.servo[5].set_pulse_width_range(500, 2500)
+
 """
 With a standard servo, you specify the position as an angle. The angle will always be between 0 and the actuation range.
 The default is 180 degrees but your servo may have a smaller sweep. You can change the total angle by setting actuation
@@ -87,5 +95,11 @@ def triangle_drop_pos():
 
 
 def parking_pos():
-    move([90, 120+30, (180-120)-30, 180-(-1*-90), 10, 0])
+    move([90, 120+30+5, (150-120)-5, 180-(-1*-90), 10, 0])
+    
+    
+
+
+
+
 
