@@ -62,8 +62,8 @@ def get_angles(i, j, k, rx=0, ry=180, rz=0):
     t4_deg = np.rad2deg(t4_rad)
     t5_deg = np.rad2deg(t5_rad)
     # 180-(-1*t2_deg) - 7
-    return [t0_deg, t1_deg+30, (180-t1_deg)-30, 180-(-1*t2_deg), 10, t4_deg] #, t5_deg]
+    return [t0_deg, t1_deg+30+5, (180-t1_deg)-30-5, 180-(-1*t2_deg), 8, t4_deg] #, t5_deg]
 
 
-print(get_angles(5, 5, 1, 50, 90, 0))
+# print(get_angles(5, 5, 1, 50, 90, 0))
 
