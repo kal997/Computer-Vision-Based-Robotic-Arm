@@ -42,18 +42,19 @@ class ObjectDetection:
                 cY = int(M["m01"] / M["m00"])
 
                 # (x, y) relative to camera frame
-                cXX = cX / 40         # 39.3700787) + 0.5)
-                cYY = cY / 40         # 39.3700787) + 0.5)
+                cXX = cX / 22.260         # 39.3700787) + 0.5)
+                cYY = cY / 21.6         # 39.3700787) + 0.5)
 
-                robot_frame = np.dot(np.array([[0, -1, 0, 10], [-1, 0, 0, 8], [0, 0, 1, 0], [0, 0, 0, 1]]),
-                                     np.array([[cXX], [cYY], [1], [1]]))
+                robot_frame = np.dot(np.array([[-1, 0, 0, 580/22.260], [0, 1, 0, 45/21.6], [0, 0, -1, 0], [0, 0, 0, 1]]),
+                                     np.array([[cXX], [cYY], [0], [1]]))
                 # (x, y) relative to robot frame
                 cXX = float("{0:.2f}".format(robot_frame[0, 0]))
                 cYY = float("{0:.2f}".format(robot_frame[1, 0]))
+                cYY -= 4
 
                 cv2.putText(img, f"({cXX},{cYY})", (cX + 5, cY + 5), font, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
                 cv2.circle(img, (cX, cY), 3, (0, 0, 255), -1)
-                coordinates.append(tuple((cXX, cYY)))
+                coordinates.append(tuple((cXX, cYY, 6)))
             else:
                 continue
 
@@ -82,11 +83,11 @@ class ObjectDetection:
             cY = int(M["m01"] / M["m00"])  # cY is the y coordinate in pixels
 
             # (x, y) relative to camera frame
-            cXX = cX / 40  # 39.3700787) + 0.5)
-            cYY = cY / 40  # 39.3700787) + 0.5)
+            cXX = cX / 22.2  # 39.3700787) + 0.5)
+            cYY = cY / 21.6  # 39.3700787) + 0.5)
 
-            robot_frame = np.dot(np.array([[0, -1, 0, 10], [-1, 0, 0, 8], [0, 0, 1, 0], [0, 0, 0, 1]]),
-                                 np.array([[cXX], [cYY], [1], [1]]))
+            robot_frame = np.dot(np.array([[-1, 0, 0, 580/22.260], [0, 1, 0, 45/21.6], [0, 0, -1, 0], [0, 0, 0, 1]]),
+                                     np.array([[cXX], [cYY], [0], [1]]))
             # (x, y) relative to robot frame
             cXX = float("{0:.2f}".format(robot_frame[0, 0]))
             cYY = float("{0:.2f}".format(robot_frame[1, 0]))
