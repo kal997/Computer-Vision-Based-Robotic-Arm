@@ -100,6 +100,8 @@ def parking_pos():
     
 
 
-
+parking_pos()
+blue_drop_pos()
+base(45)
 
 
