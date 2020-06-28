@@ -83,9 +83,12 @@ def triangle_drop_pos():
 
 
 def parking_pos():
-    move([90, 30+130+5, 150-130-5, 180-(-1*-90), 10, 30])
+    move([90, 30+140+5, 150-140-5, 180-(-1*-90), 6, 40])
     
-   
+
+
+'''
+     
 blue_drop_pos()
 sleep(1)
 parking_pos()
@@ -97,4 +100,13 @@ sleep(1)
 green_drop_pos()
 sleep(1)
 parking_pos()
+'''
+
+'''
+move(get_angles(15+0.5, 0, 5))
+sleep(5)
+shoulder(30+90+5, 150-90-5)
+parking_pos()
+'''
+
 
