@@ -8,7 +8,7 @@ kit.servo[1].set_pulse_width_range(500, 2500)
 kit.servo[2].set_pulse_width_range(500, 2500)
 kit.servo[3].set_pulse_width_range(500, 2500)
 kit.servo[4].set_pulse_width_range(500, 2500)
-kit.servo[5].set_pulse_width_range(500, 2500)
+kit.servo[7].set_pulse_width_range(500, 2500)
 
 def base(ang):
     kit.servo[0].angle = ang
@@ -37,7 +37,7 @@ def wrist(ang):
 
 
 def hand(ang):
-    kit.servo[5].angle = ang
+    kit.servo[7].angle = ang
 
 
 def pump():
@@ -83,12 +83,12 @@ def triangle_drop_pos():
 
 
 def parking_pos():
-    move([90, 30+140+5, 150-140-5, 180-(-1*-90), 6, 40])
+    move([90, 30+140+5, 150-140-5, 180-(-1*-90),0, 40])
     
 
 
-'''
-     
+
+'''     
 blue_drop_pos()
 sleep(1)
 parking_pos()
@@ -107,6 +107,29 @@ move(get_angles(15+0.5, 0, 5))
 sleep(5)
 shoulder(30+90+5, 150-90-5)
 parking_pos()
+
+def sh(x):
+    shoulder(30+x+5, 150-x-5)
+    
+sh(100)
+sleep(1)
+elbow(180-(-1*-90))
+sleep(1)
+wrist(90)
 '''
+'''
+def sh(x):
+    shoulder(30+x+5, 150-x-5)
+elbow(180)
+sleep(0.5)
+sh(5)
+sleep(0.5)
+hand(90)
+sleep(0.5)
+wrist(0)
+'''
+parking_pos()
 
 
+
+    
