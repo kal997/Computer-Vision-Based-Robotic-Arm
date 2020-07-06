@@ -6,7 +6,7 @@ def nothing(x):
 cap = cv2.VideoCapture(0)
 cap.set(3, 1024)
 cap.set(4, 768)
-'''  
+'''
 
 
 cv2.namedWindow("TRACKBARS")
@@ -36,7 +36,7 @@ while True:
     cv2.imshow("img",frame)
     if cv2.waitKey(1) & 0xFF == 27:
         # to calculate the noise area
-        cv2.imwrite('/home/pi/Desktop/captured_pics/red.jpg', mask)
+        cv2.imwrite('/home/pi/Desktop/grad project sketches/noise.jpg', mask)
         break
 print(f"lower = [{l_h},{l_s},{l_v}]")
 print(f"upper = [{u_h},{u_s},{u_v}]")
