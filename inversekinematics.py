@@ -3,6 +3,20 @@ import numpy as np
 
 
 def get_angles(i, j, k, rx=0, ry=180, rz=0):
+    k-=0.5
+    if i >= 0:
+        i+=0.5
+        if j == 0:
+            pass
+        else:
+            j-=0.5
+    if i < 0:
+        i-=0.5
+        if j == 0:
+            pass
+        else:
+            j-=0.5
+        
     a0 = 10.5
     a1 = 10.7
     a2 = 9.5
@@ -62,7 +76,7 @@ def get_angles(i, j, k, rx=0, ry=180, rz=0):
     t4_deg = np.rad2deg(t4_rad)
     t5_deg = np.rad2deg(t5_rad)
     # 180-(-1*t2_deg) - 7
-    return [t0_deg, t1_deg+30+10, (180-t1_deg)-30-10, 180-(-1*t2_deg), 8, t4_deg] #, t5_deg]
+    return [t0_deg, t1_deg+30+10, (180-t1_deg)-30-10, 180-(-1*t2_deg), 0, t4_deg+95] #, t5_deg]
 
 
 # print(get_angles(5, 5, 1, 50, 90, 0))
