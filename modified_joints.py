@@ -52,6 +52,7 @@ def move(angles):
     hand(angles[5])
 
 
+
 def blue_drop_pos():
     pos = get_angles(10, 0, 5)
     move(pos)
@@ -63,8 +64,8 @@ def green_drop_pos():
 
 
 def red_drop_pos():
-    pos = get_angles(10, 10, 5)
-    move(pos)
+    
+    move(get_angles(-19, 0, 5))
 
 
 def square_drop_pos():
@@ -128,8 +129,41 @@ hand(90)
 sleep(0.5)
 wrist(0)
 '''
+#move(get_angles(1+10,10, 3))
+#print(get_angles(0,14,3))
+#parking_pos()
+'''
+move(get_angles(10,12, 3))
+sleep(5)
 parking_pos()
+sleep(5)
+move(get_angles(-22,0, 3))
+sleep(5)
+parking_pos()
+sleep(5)
+move(get_angles(-15,15, 3))
+sleep(5)
+parking_pos()
+'''
+'''
+parking_pos()
+sleep(1)
+move(get_angles(0-0.5, 22, 3.5))
+sleep(5)
+'''
+
+#sleep(3)
+#move(get_angles(-15, 15, 3))
+# positive half x+=1,   y-=0.5 and at x=0
+# negative half x-=0.5, y-=0.5 at y=0, y=0
 
 
 
-    
+
+
+
+'''
+move(get_angles(15, 15, 3))
+sleep(10)
+parking_pos()
+'''
