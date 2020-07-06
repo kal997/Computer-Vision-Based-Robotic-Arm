@@ -12,17 +12,16 @@ camera = PiCamera()
 camera.resolution = (1024, 768)
 triangles_check, squares_check, circles_check, red_check, green_check, blue_check = user_input()
 
-
 # To create an instance of the class depends on the user input
 
 if triangles_check or squares_check or circles_check:
     detected_shape = ObjectDetection(np.array([0, 121, 26]), np.array([180, 255, 255]), 2000)
 elif green_check:
-    green_color = ObjectDetection(np.array([65,138,65]), np.array([98,233,193]), 2000)
+    green_color = ObjectDetection(np.array([74,53,75]), np.array([94,184,245]), 2000)
 elif red_check:
-    red_color = ObjectDetection(np.array([0,90,90]), np.array([180,174,132]), 2000)
+    red_color = ObjectDetection(np.array([131,73,76]), np.array([180,202,200]), 2000)
 elif blue_check:
-    blue_color = ObjectDetection(np.array([103,139,27]), np.array([157,220,153]), 2000)
+    blue_color = ObjectDetection(np.array([106,88,83]), np.array([141,164,114]), 2000)
 
 while red_check:
     
@@ -58,7 +57,7 @@ while red_check:
         modified_joints.move(get_angles(red_coors[0][0], red_coors[0][1], red_coors[0][2]))
         sleep(2)
         # joints.pump()       # turn on the pump
-        joints.red_drop_pos()
+        modified_joints.red_drop_pos()
         sleep(2)
         # joints.pump()       # turn of the pump
         modified_joints.parking_pos()
