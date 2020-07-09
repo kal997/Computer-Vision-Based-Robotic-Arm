@@ -2,6 +2,18 @@ import multiprocessing
 from inversekinematics import get_angles
 from adafruit_servokit import ServoKit
 from time import sleep
+import RPi.GPIO as GPIO          
+
+in1 = 24
+in2 = 23
+en = 25
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(in1,GPIO.OUT)
+GPIO.setup(in2,GPIO.OUT)
+GPIO.setup(en,GPIO.OUT)
+GPIO.output(in1,GPIO.LOW)
+GPIO.output(in2,GPIO.LOW)
+
 kit = ServoKit(channels=16)
 kit.servo[0].set_pulse_width_range(500, 2500)
 kit.servo[1].set_pulse_width_range(500, 2500)
@@ -40,8 +52,14 @@ def hand(ang):
     kit.servo[7].angle = ang
 
 
-def pump():
-    pass
+def pump(state):
+    if state == 1:
+        GPIO.output(in1,GPIO.HIGH)
+        GPIO.output(in2,GPIO.LOW)
+    elif state == 0:
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.LOW)
+        GPIO.cleanup()
 
 
 def move(angles):
