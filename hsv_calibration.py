@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 def nothing(x):
     pass
-img = cv2.imread("C:/Users/KHALED/Desktop/shapes.jpg")
-img = cv2.resize(img,(int(img.shape[1]/2),int(img.shape[0]/2)))
+img = cv2.imread("C:/Users/KHALED/Desktop/khaled.jpg")
+#img = cv2.resize(img,(int(img.shape[1]/2),int(img.shape[0]/2)))
 
 
 cv2.namedWindow("TRACKBARS")
@@ -25,6 +25,8 @@ while True:
     lower_blue = np.array([l_h,l_s,l_v])
     upper_blue = np.array([u_h,u_s,u_v])
     mask = cv2.inRange(hsv_img,lower_blue,upper_blue)
+    cv2.namedWindow("masked img", cv2.WINDOW_NORMAL)
+    cv2.namedWindow("img", cv2.WINDOW_NORMAL)
     cv2.imshow("masked img",mask)
     cv2.imshow("img",img)
     if cv2.waitKey(1) & 0xFF == 27:
