@@ -2,12 +2,10 @@ import cv2
 import numpy as np
 def nothing(x):
     pass
-'''
+
 cap = cv2.VideoCapture(0)
 cap.set(3, 1024)
 cap.set(4, 768)
-'''
-
 
 cv2.namedWindow("TRACKBARS")
 cv2.createTrackbar("L_H","TRACKBARS",0,180,nothing)
@@ -27,10 +25,12 @@ while True:
     u_h = cv2.getTrackbarPos("U_H","TRACKBARS")
     u_s = cv2.getTrackbarPos("U_S","TRACKBARS")
     u_v = cv2.getTrackbarPos("U_V","TRACKBARS")
+
     lower_value = np.array([l_h,l_s,l_v])
     upper_value = np.array([u_h,u_s,u_v])
     mask = cv2.inRange(hsv_img,lower_value,upper_value)
     cv2.namedWindow("masked img", cv2.WINDOW_NORMAL)
+
     cv2.imshow("masked img",mask)
     cv2.namedWindow("img", cv2.WINDOW_NORMAL)
     cv2.imshow("img",frame)
@@ -41,5 +41,5 @@ while True:
 print(f"lower = [{l_h},{l_s},{l_v}]")
 print(f"upper = [{u_h},{u_s},{u_v}]")
 
-#cap.release()
+cap.release()
 cv2.destroyAllWindows()
