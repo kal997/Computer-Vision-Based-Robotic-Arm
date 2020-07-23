@@ -2,13 +2,27 @@ from math import sin, cos, sqrt, acos, atan2
 import numpy as np
 
 
-def get_angles(i, j, k, rx, ry, rz):
-    a0 = 5
-    a1 = 5
-    a2 = 5
-    a3 = 5
-    a4 = 5
-    a5 = 5
+def get_angles(i, j, k, rx=0, ry=180, rz=0):
+    k-=0.5
+    if i >= 0:
+        i+=0.5
+        if j == 0:
+            pass
+        else:
+            j-=0.5
+    if i < 0:
+        i-=0.5
+        if j == 0:
+            pass
+        else:
+            j-=0.5
+        
+    a0 = 10.5
+    a1 = 10.7
+    a2 = 9.5
+    a3 = 3.5
+    a4 = 2.5
+    a5 = 0
 
     # rx, ry and rz are in radians
     rx = np.deg2rad(rx)
@@ -61,6 +75,9 @@ def get_angles(i, j, k, rx, ry, rz):
     t3_deg = np.rad2deg(t3_rad)
     t4_deg = np.rad2deg(t4_rad)
     t5_deg = np.rad2deg(t5_rad)
+    # 180-(-1*t2_deg) - 7
+    return [t0_deg, t1_deg+30+10, (180-t1_deg)-30-10, 180-(-1*t2_deg), 0, t4_deg+95] #, t5_deg]
 
-    return t0_deg, t1_deg, t2_deg, t3_deg, t4_deg, t5_deg
+
+# print(get_angles(5, 5, 1, 50, 90, 0))
 

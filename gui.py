@@ -58,7 +58,7 @@ def user_input():
     labels_font = tkinter.font.Font(root=root,family="Georgia", size=12, weight=tkinter.font.BOLD)
     buttons_font = tkinter.font.Font(root=root,family="Georgia", size=10, weight=tkinter.font.BOLD)
 
-    photo = tkinter.PhotoImage(file="C:\\Users\\KHALED\\Downloads\\gui1.gif")
+    photo = tkinter.PhotoImage(file='/home/pi/Desktop/gui1.gif')
     photo_label = tkinter.Label(root,image=photo)
 
     space = tkinter.Label(root,text="")

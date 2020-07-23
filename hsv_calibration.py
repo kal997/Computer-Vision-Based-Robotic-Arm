@@ -2,9 +2,10 @@ import cv2
 import numpy as np
 def nothing(x):
     pass
-img = cv2.imread("C:/Users/KHALED/Desktop/khaled.jpg")
-#img = cv2.resize(img,(int(img.shape[1]/2),int(img.shape[0]/2)))
 
+cap = cv2.VideoCapture(0)
+cap.set(3, 1024)
+cap.set(4, 768)
 
 cv2.namedWindow("TRACKBARS")
 cv2.createTrackbar("L_H","TRACKBARS",0,180,nothing)
@@ -15,23 +16,30 @@ cv2.createTrackbar("U_S","TRACKBARS",0,255,nothing)
 cv2.createTrackbar("U_V","TRACKBARS",0,255,nothing)
 
 while True:
-    hsv_img = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+    # _, frame = cap.read()
+    frame = cv2.imread('/home/pi/Desktop/grad project sketches/khaled.jpg')
+    hsv_img = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
     l_h = cv2.getTrackbarPos("L_H","TRACKBARS")
     l_s = cv2.getTrackbarPos("L_S","TRACKBARS")
     l_v = cv2.getTrackbarPos("L_V","TRACKBARS")
     u_h = cv2.getTrackbarPos("U_H","TRACKBARS")
     u_s = cv2.getTrackbarPos("U_S","TRACKBARS")
     u_v = cv2.getTrackbarPos("U_V","TRACKBARS")
-    lower_blue = np.array([l_h,l_s,l_v])
-    upper_blue = np.array([u_h,u_s,u_v])
-    mask = cv2.inRange(hsv_img,lower_blue,upper_blue)
+
+    lower_value = np.array([l_h,l_s,l_v])
+    upper_value = np.array([u_h,u_s,u_v])
+    mask = cv2.inRange(hsv_img,lower_value,upper_value)
     cv2.namedWindow("masked img", cv2.WINDOW_NORMAL)
-    cv2.namedWindow("img", cv2.WINDOW_NORMAL)
+
     cv2.imshow("masked img",mask)
-    cv2.imshow("img",img)
+    cv2.namedWindow("img", cv2.WINDOW_NORMAL)
+    cv2.imshow("img",frame)
     if cv2.waitKey(1) & 0xFF == 27:
+        # to calculate the noise area
+        cv2.imwrite('/home/pi/Desktop/grad project sketches/noise.jpg', mask)
         break
 print(f"lower = [{l_h},{l_s},{l_v}]")
 print(f"upper = [{u_h},{u_s},{u_v}]")
 
+cap.release()
 cv2.destroyAllWindows()
