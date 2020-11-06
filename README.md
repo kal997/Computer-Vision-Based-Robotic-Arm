@@ -1,4 +1,5 @@
 # Computer Vision Based Robotic Arm.  
+(https://www.youtube.com/playlist?list=PLIIsttZjjmMNYdJ-SehtZwKRwdqKRiraV).
 
 The algorithm starts with image acquisition stage, in which we specify image properties such as resolution. Then the 
 image is saved to specific directory. The image name is then concatenated with the round number (round is the algorithm 
